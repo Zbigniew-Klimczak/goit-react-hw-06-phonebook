@@ -16,12 +16,13 @@ const ContactForm = () => {
         className={css.form}
         onSubmit={evt => {
           evt.preventDefault();
-          const form = evt.currentTarget;
+
           if (contactFilter(contacts, name)) {
             Notiflix.Notify.warning(`${name} is already in contacts`);
           } else {
             dispatch(addContact(name, number));
-            form.reset();
+            dispatch(setName(''));
+            dispatch(setNumber(''));
           }
         }}
       >
